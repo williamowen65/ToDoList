@@ -68,15 +68,17 @@ export class ToDoItem {
     public animateExpandCollapse(expand: boolean): void {
         const textarea = this.htmlNode.querySelector('textarea');
         if (textarea) {
-            const startHeight = expand ? 0 : 400;
-            const endHeight = expand ? 400 : 0;
-            const duration = 300;
+            const startHeight = expand ? 40 : 400;
+            const endHeight = expand ? 400 : 40;
+            const duration = 1000;
             const startTime = performance.now();
 
             const animate = (currentTime: number) => {
                 const elapsedTime = currentTime - startTime;
                 const progress = Math.min(elapsedTime / duration, 1);
-                const height = startHeight + (endHeight - startHeight) * progress;
+                const easeInOutQuad = (t: number) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+                const easedProgress = easeInOutQuad(progress);
+                const height = startHeight + (endHeight - startHeight) * easedProgress;
                 textarea.style.height = `${height}px`;
 
                 if (progress < 1) {
