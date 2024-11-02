@@ -2,21 +2,30 @@ import "./styles.scss";
 import {ToDoItem, TodoItemData} from "./class/ToDoItem";
 
 
-const todoItems : TodoItemData[] = [
+const todoItems: TodoItemData[] = [
     {
         id: "1",
         task: "Take out trash",
-        complete: "incomplete"
+        complete: "incomplete",
+        priority: "low" // Add priority
     },
     {
         id: "2",
         task: "Do laundry",
-        complete: "incomplete"
+        complete: "incomplete",
+        priority: "medium" // Add priority
     },
     {
         id: "3",
         task: "Walk the dog",
-        complete: "incomplete"
+        complete: "incomplete",
+        priority: "high" // Add priority
+    },
+    {
+        id: "4",
+        task: "Walk the dog",
+        complete: "complete",
+        priority: "high" // Add priority
     }
 ];
 // const todoItemNodes = document.querySelectorAll('.todoItem');

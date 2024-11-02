@@ -2,19 +2,21 @@ export type TodoItemData = {
     id: string;
     task: string;
     complete: string;
+    priority: string;
 }
 
 export class ToDoItem {
     id: number;
     task: string;
     complete: boolean;
+    priority: string; // Add priority property
     htmlNode: HTMLElement;
 
     constructor(data: TodoItemData, htmlNode: HTMLElement) {
-
         this.id = ToDoItem.processId(data.id);
         this.task = ToDoItem.processTask(data.task);
         this.complete = ToDoItem.processComplete(data.complete);
+        this.priority = data.priority; // Set priority
         this.htmlNode = htmlNode;
 
         const expandBtn = this.htmlNode.querySelector('.expandBtn');
@@ -22,9 +24,19 @@ export class ToDoItem {
             expandBtn.addEventListener('click', () => this.toggleItem());
         }
 
-        this.addToDom()
+        this.addToDom();
+        this.updatePriorityDisplay(); // Update priority display
+
+        // this.setListeners(); // userSetPriority
     }
 
+    // Add a method to update the priority display
+    updatePriorityDisplay(): void {
+        const priorityElement = this.htmlNode.querySelector('select.priority') as HTMLSelectElement;
+        if (priorityElement) {
+            
+        }
+    }
 
     printDetails(): void {
         console.log(`${this.id}\t${this.task} ${this.complete ? "\t(complete)" : ""}`);
@@ -93,7 +105,6 @@ export class ToDoItem {
             requestAnimationFrame(animate);
         }
     }
-
 
     public scrollToView(): void {
         const topOffset = 0
