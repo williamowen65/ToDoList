@@ -30,6 +30,16 @@ export class ToDoItem {
         // this.setListeners(); // userSetPriority
     }
 
+    public setHtmlNode(htmlNode: HTMLElement): void {  
+        // this.htmlNode = 
+        // create htmlNode from template string
+        const template = `${htmlNode.outerHTML}`;
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = template;
+        this.htmlNode = tempDiv.firstElementChild as HTMLElement;
+        
+    }
+
     // Add a method to update the priority display
     updatePriorityDisplay(): void {
         const priorityElement = this.htmlNode.querySelector('select.priority') as HTMLSelectElement;
@@ -132,6 +142,42 @@ export class ToDoItem {
                 notCompletedList.appendChild(this.htmlNode);
             }
         }
+    }
+
+    
+    static createTodoItem(data: TodoItemData, htmlNode: HTMLElement): ToDoItem {
+
+        const template = `
+        <div class="todo">
+            <div class="left-sidebar">
+              <div class="mark-completed">
+                <b><small><label class="d-none" for="completed-task-${data.id}">Mark completed</label></small></b>
+                  <input type="checkbox" class="completed" id="completed-task-${data.id}" name="completed-task-${data.id}" />
+              </div>
+              <button class="grid-placement expandBtn">Expand Item</button>
+            </div>
+  
+            <div class="text-inputs">
+              <input type="text" class="title" placeholder="Title" />
+              <textarea name="description" placeholder="Description"></textarea>
+            </div>
+            <div class="right-sidebar">
+              <select class="priority">
+                <!-- selected assigned by js -->
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+              <button class="deleteBtn">Delete</button>
+              <div class="todo-details">Todo details</div>
+            </div>
+          </div>
+        `
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = template.trim();
+        htmlNode = tempDiv.firstElementChild as HTMLElement;
+
+        return new ToDoItem(data, htmlNode);
     }
    
 }

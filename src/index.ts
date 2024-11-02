@@ -39,7 +39,7 @@ if (list) {
         if (template) {
             const todoElement = (template.content.cloneNode(true) as HTMLElement).querySelector(".todo");
             console.log({todoElement});
-            const listItem = new ToDoItem(item, (todoElement as HTMLElement));
+            const listItem = ToDoItem.createTodoItem(item, (todoElement as HTMLElement));
             ToDoItemInstances[item.id] = listItem;
         }
     });
