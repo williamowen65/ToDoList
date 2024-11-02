@@ -8,7 +8,38 @@
         <h1>Todo List!</h1>
         <small>CRUD, mark completed, priority, collections. Storage</small>
 
-        <div id="todoList"></div>
+        <div id="todoList">
+            <div id="not-completed">
+
+            <div class="todo">
+                <input type="checkbox" class="completed">
+
+                <div>
+                <input type="text" class="title" placeholder="Title">
+                <textarea name="description" placeholder="Description"></textarea>
+                </div>
+                <select class="priority">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <button class="delete">Delete</button>
+            </div>
+
+            </div>
+            <div id="completed"></div>
+        </div>
+
+        <template>
+            <div class="todo">
+                <input type="checkbox" class="completed">
+                <input type="text" class="title">
+                <input type="number" class="priority">
+                <button class="delete">Delete</button>
+            </div>
+        </template>
     </body>
     
     <script>
