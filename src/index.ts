@@ -1,6 +1,7 @@
 import "./styles.scss";
 import {ToDoItem, TodoItemData} from "./class/ToDoItem";
 import {ToDoList} from "./class/ToDoList";
+import "os-ui-components/main.js"
 
 
 const todoItems: TodoItemData[] = [
