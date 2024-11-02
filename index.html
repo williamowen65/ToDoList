@@ -11,38 +11,16 @@
     <div id="todoList">
       <div id="not-completed">
         <h1>NOT COMPLETE</h1>
+        <div class="list-container"></div>
       </div>
       <div id="completed">
         <h1>Completed</h1>
+        <div class="list-container"></div>
       </div>
     </div>
 
-    <template id="todo-template">
-        <div class="todo">
-            <div class="left-sidebar">
-              <div class="mark-completed">
-                <b><small><label class="d-none" for="completed-task-${this.id}]">Mark completed</label></small></b>
-                  <input type="checkbox" class="completed" id="completed-task-${this.id}]" name="completed-task-${this.id}]" />
-              </div>
-              <button class="grid-placement expandBtn">Expand Item</button>
-            </div>
-  
-            <div class="text-inputs">
-              <input type="text" class="title" placeholder="Title" />
-              <textarea name="description" placeholder="Description"></textarea>
-            </div>
-            <div class="right-sidebar">
-              <select class="priority">
-                <!-- selected assigned by js -->
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-              </select>
-              <button class="deleteBtn">Delete</button>
-              <div class="todo-details">Todo details</div>
-            </div>
-          </div>
-    </template>
+    <footer></footer>
+    
   </body>
 
   <script></script>

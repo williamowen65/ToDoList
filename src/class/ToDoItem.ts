@@ -4,6 +4,7 @@ export type TodoItemData = {
     complete: string;
     priority: string;
     description: string;
+    index?: number;
 }
 
 export class ToDoItem {
@@ -13,6 +14,7 @@ export class ToDoItem {
     priority: string; // Add priority property
     htmlNode: HTMLElement;
     description: string;
+    index: number
 
     constructor(data: TodoItemData, htmlNode: HTMLElement) {
         this.id = ToDoItem.processId(data.id);
@@ -21,7 +23,7 @@ export class ToDoItem {
         this.priority = data.priority; // Set priority
         this.htmlNode = htmlNode;
         this.description = ToDoItem.processDescription(data.description);
-        
+        this.index = data.index;;
 
         const expandBtn = this.htmlNode.querySelector('.expandBtn');
         if (expandBtn) {
@@ -31,16 +33,35 @@ export class ToDoItem {
         this.addToDom();
         this.updatePriorityDisplay(); // Update priority display
 
-        // this.setListeners(); // userSetPriority
+        this.setListeners(); // userSetPriority
     }
 
-    public setHtmlNode(htmlNode: HTMLElement): void {  
+    public setListeners(): void {
+        // Add event listener for the priority select element
+        const priorityElement = this.htmlNode.querySelector('select.priority') as HTMLSelectElement;
+        if (priorityElement) {
+            priorityElement.addEventListener('change', (event) => {
+                const target = event.target as HTMLSelectElement;
+                this.priority = target.value;
+            });
+        }
+
+        // delete a todo item
+        const deleteBtn = this.htmlNode.querySelector('.deleteBtn');
+        if (deleteBtn) {
+            deleteBtn.addEventListener('click', () => {
+                this.htmlNode.remove();
+            });
+        }
+    }
+
+    public setHtmlNode(htmlNode: HTMLElement): void {
         // create htmlNode from template string
         const template = `${htmlNode.outerHTML}`;
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = template;
         this.htmlNode = tempDiv.firstElementChild as HTMLElement;
-        
+
     }
 
     // Add a method to update the priority display
@@ -81,14 +102,14 @@ export class ToDoItem {
                 expandToggle.textContent = "Expand Item";
                 this.animateExpandCollapse(false)
             } else {
-                textarea.setAttribute('style', "height: 400px");
-                textarea.setAttribute("expanded", "true");
-                expandToggle.textContent = "Collapse Item";
-                this.animateExpandCollapse(true)
+                this.scrollToView();
                 setTimeout(() => {
-                    this.scrollToView();
-                }, 200)
-            }           
+                    textarea.setAttribute('style', "height: 400px");
+                    textarea.setAttribute("expanded", "true");
+                    expandToggle.textContent = "Collapse Item";
+                    this.animateExpandCollapse(true)
+                }, 20)
+            }
         }
     }
 
@@ -126,7 +147,7 @@ export class ToDoItem {
         const elementPosition = this.htmlNode.getBoundingClientRect().top + window.pageYOffset;
         const offsetPosition = elementPosition - topOffset;
 
-        console.log("scrolling to", {node: this.htmlNode, elementPosition, offsetPosition, rect: this.htmlNode.getBoundingClientRect()});
+        console.log("scrolling to", { node: this.htmlNode, elementPosition, offsetPosition, rect: this.htmlNode.getBoundingClientRect() });
 
         window.scrollTo({
             top: offsetPosition,
@@ -134,23 +155,57 @@ export class ToDoItem {
         });
     }
 
+    // When a TodoItem is creates, it should place itself in the correct spot with rending only its content.
+    // No rerendering of any other content.
+    // Uses an index property to determine where it should be placed in the list.
     public addToDom(): void {
-        const notCompletedList = document.querySelector('#not-completed');
-        const completedList = document.querySelector('#completed');
+
+        const notCompletedList = document.querySelector('#not-completed .list-container') as HTMLElement;
+        const completedList = document.querySelector('#completed .list-container') as HTMLElement;
+
+        const appendToList = (list: HTMLElement) => {
+            const children = Array.from(list.children);
+            let inserted = false;
+
+            for (let i = 0; i < children.length; i++) {
+                const child = children[i] as HTMLElement;
+                //@ts-ignore
+                const childPriority = child.querySelector('select.priority')?.value;
+                const childIndex = parseInt(child.getAttribute('data-index') || '0');
+
+                if (this.priority === childPriority && this.index < childIndex) {
+                    list.insertBefore(this.htmlNode, child);
+                    inserted = true;
+                    break;
+                } else if (this.priority === 'high' && childPriority !== 'high') {
+                    list.insertBefore(this.htmlNode, child);
+                    inserted = true;
+                    break;
+                } else if (this.priority === 'medium' && childPriority === 'low') {
+                    list.insertBefore(this.htmlNode, child);
+                    inserted = true;
+                    break;
+                }
+            }
+
+            if (!inserted) {
+                list.appendChild(this.htmlNode);
+            }
+        };
 
         if (this.complete) {
             if (completedList) {
-                completedList.appendChild(this.htmlNode);
+                appendToList(completedList);
             }
         } else {
             if (notCompletedList) {
-                notCompletedList.appendChild(this.htmlNode);
+                appendToList(notCompletedList);
             }
         }
     }
 
-    
-    static createTodoItem(data: TodoItemData, htmlNode: HTMLElement): ToDoItem {
+
+    static createTodoItem(data: TodoItemData): ToDoItem {
 
         const template = `
         <div class="todo">
@@ -180,9 +235,9 @@ export class ToDoItem {
         `
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = template.trim();
-        htmlNode = tempDiv.firstElementChild as HTMLElement;
+        const htmlNode = tempDiv.firstElementChild as HTMLElement;
 
         return new ToDoItem(data, htmlNode);
     }
-   
+
 }
