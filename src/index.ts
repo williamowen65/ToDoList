@@ -7,25 +7,29 @@ const todoItems: TodoItemData[] = [
         id: "1",
         task: "Take out trash",
         complete: "incomplete",
-        priority: "low" // Add priority
+        priority: "low", // Add priority
+        description: "Take the trash out to the curb for pickup"
     },
     {
         id: "2",
         task: "Do laundry",
         complete: "incomplete",
-        priority: "medium" // Add priority
+        priority: "medium", // Add priority
+        description: "Wash, dry, and fold the laundry"
     },
     {
         id: "3",
         task: "Walk the dog",
         complete: "incomplete",
-        priority: "high" // Add priority
+        priority: "high", // Add priority
+        description: "Take the dog for a 30-minute walk around the neighborhood"
     },
     {
         id: "4",
         task: "Walk the dog",
         complete: "complete",
-        priority: "high" // Add priority
+        priority: "high", // Add priority
+        description: "Take the dog for a 30-minute walk around the neighborhood"
     }
 ];
 // const todoItemNodes = document.querySelectorAll('.todoItem');
@@ -38,10 +42,8 @@ if (list) {
         const template = document.querySelector("#todo-template") as HTMLTemplateElement;
         if (template) {
             const todoElement = (template.content.cloneNode(true) as HTMLElement).querySelector(".todo");
-            console.log({todoElement});
             const listItem = ToDoItem.createTodoItem(item, (todoElement as HTMLElement));
             ToDoItemInstances[item.id] = listItem;
         }
     });
-
 }

@@ -3,6 +3,7 @@ export type TodoItemData = {
     task: string;
     complete: string;
     priority: string;
+    description: string;
 }
 
 export class ToDoItem {
@@ -11,6 +12,7 @@ export class ToDoItem {
     complete: boolean;
     priority: string; // Add priority property
     htmlNode: HTMLElement;
+    description: string;
 
     constructor(data: TodoItemData, htmlNode: HTMLElement) {
         this.id = ToDoItem.processId(data.id);
@@ -18,6 +20,8 @@ export class ToDoItem {
         this.complete = ToDoItem.processComplete(data.complete);
         this.priority = data.priority; // Set priority
         this.htmlNode = htmlNode;
+        this.description = ToDoItem.processDescription(data.description);
+        
 
         const expandBtn = this.htmlNode.querySelector('.expandBtn');
         if (expandBtn) {
@@ -31,7 +35,6 @@ export class ToDoItem {
     }
 
     public setHtmlNode(htmlNode: HTMLElement): void {  
-        // this.htmlNode = 
         // create htmlNode from template string
         const template = `${htmlNode.outerHTML}`;
         const tempDiv = document.createElement('div');
@@ -59,6 +62,9 @@ export class ToDoItem {
     static processId(id: string): number {
         return parseInt(id);
     }
+    static processDescription(description: string): string {
+        return description.trim();
+    }
 
     static processComplete(complete: string): boolean {
         return complete === "complete";
@@ -79,11 +85,10 @@ export class ToDoItem {
                 textarea.setAttribute("expanded", "true");
                 expandToggle.textContent = "Collapse Item";
                 this.animateExpandCollapse(true)
-            }
-
-            setTimeout(() => {
-                this.scrollToView();
-            }, 200)
+                setTimeout(() => {
+                    this.scrollToView();
+                }, 200)
+            }           
         }
     }
 
@@ -158,8 +163,8 @@ export class ToDoItem {
             </div>
   
             <div class="text-inputs">
-              <input type="text" class="title" placeholder="Title" />
-              <textarea name="description" placeholder="Description"></textarea>
+              <input type="text" class="title" placeholder="Title" value="${data.task}"/>
+              <textarea name="description" placeholder="Description" >${data.description}</textarea>
             </div>
             <div class="right-sidebar">
               <select class="priority">
