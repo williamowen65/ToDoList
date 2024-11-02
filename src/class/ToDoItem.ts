@@ -1,3 +1,6 @@
+import $ from 'jquery';
+import "select2"
+
 export type TodoItemData = {
     id: string;
     task: string;
@@ -209,8 +212,20 @@ export class ToDoItem {
                 appendToList(notCompletedList);
             }
         }
+
+        this.setSelect2Nodes();
     }
 
+    public setSelect2Nodes(): void {
+        const selectElements = this.htmlNode.querySelectorAll('#details select');
+        selectElements.forEach(select => {
+            //@ts-ignore
+            $(select).select2({
+                width: '100%',
+                theme: 'classic'
+            })
+        });
+    }
 
     static createTodoItem(data: TodoItemData): ToDoItem {
 
@@ -218,37 +233,45 @@ export class ToDoItem {
         <div class="todo">
             <div class="left-sidebar">
               <div class="mark-completed">
-                <b><small><label class="d-none" for="completed-task-${data.id}">Mark completed</label></small></b>
-                  <input type="checkbox" class="completed" id="completed-task-${data.id}" name="completed-task-${data.id}" />
-                   <div class="dial-container">
-                  <os-forum-card-vote totalvotecount="1" averagevote="10"></os-forum-card-vote>
-                </div>
-                </div>
-                <button class="grid-placement expandBtn">Expand Item</button>
+            <b><small><label class="d-none" for="completed-task-${data.id}">Mark completed</label></small></b>
+              <input type="checkbox" class="completed" id="completed-task-${data.id}" name="completed-task-${data.id}" />
+               <div class="dial-container">
+              <os-forum-card-vote totalvotecount="1" averagevote="10"></os-forum-card-vote>
             </div>
-  
+            </div>
+            <button class="grid-placement expandBtn">Expand Item</button>
+            </div>
+      
             <div class="text-inputs">
               <input type="text" class="title" placeholder="Title" value="${data.task}"/>
               <textarea name="description" placeholder="Description" >${data.description}</textarea>
             </div>
             <div class="right-sidebar">
               <select class="priority">
-                <!-- selected assigned by js -->
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
+            <!-- selected assigned by js -->
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
               </select>
               <button class="deleteBtn">Delete</button>
-              <fieldset>
-                  <legend>Details</legend>
-                  Related Tasks: <input type="text" value="Task" />
-
-                  Child Tasks: <input type="text" value="Task" />
-                  </fieldset>
+              <fieldset id="details">
+              <legend>Details</legend>
+              <div>Related Tasks: </div>
+              
+              <select id="related-task=${data.id}">
+                <option value="Task1">Task1</option>
+                <option value="Task2">Task2</option>
+              </select>
+              <div>Child Tasks: </div>
+              <select> id="child-task=${data.id}"
+                <option value="Task1">Task1</option>
+                <option value="Task2">Task2</option>
+              </select>
+              </fieldset>
               <div class="todo-details">
-                  
-                  <button class="detailsBtn">ToDo Details</button>
-                  <button class="commentsBtn">Comments</button>
+              
+              <button class="detailsBtn">ToDo Details</button>
+              <button class="commentsBtn">Comments</button>
               </div>
             </div>
           </div>
