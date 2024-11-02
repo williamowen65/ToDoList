@@ -11,7 +11,7 @@ export class ToDoItem {
     htmlNode: HTMLElement;
 
     constructor(data: TodoItemData, htmlNode: HTMLElement) {
-       
+
         this.id = ToDoItem.processId(data.id);
         this.task = ToDoItem.processTask(data.task);
         this.complete = ToDoItem.processComplete(data.complete);
@@ -19,12 +19,12 @@ export class ToDoItem {
 
         const expandBtn = this.htmlNode.querySelector('.expandBtn');
         if (expandBtn) {
-            expandBtn.addEventListener('click', () => this.expandItem());
+            expandBtn.addEventListener('click', () => this.toggleItem());
         }
 
-       this.addToDom()
+        this.addToDom()
     }
-    
+
 
     printDetails(): void {
         console.log(`${this.id}\t${this.task} ${this.complete ? "\t(complete)" : ""}`);
@@ -42,13 +42,22 @@ export class ToDoItem {
         return complete === "complete";
     }
 
-    public expandItem(): void {
-        console.log(`Expanded: ${this.task}`);
-        this.htmlNode.style.height = "auto";
-        this.htmlNode.querySelector('textarea').style.height = "100%";
-        // this.htmlNode.style.whiteSpace = "normal";
+    public toggleItem(): void {
+        const textarea = this.htmlNode.querySelector('textarea')
+
+        if (textarea) {
+            if (textarea.hasAttribute('expanded')) {
+                textarea.removeAttribute('style');
+                textarea.removeAttribute('expanded');
+            } else {
+                textarea.setAttribute('style', "height: 400px");
+                textarea.setAttribute("expanded", "true");
+            }
+
+
+        }
     }
-    
+
     public addToDom(): void {
         const list = document.querySelector('#todoList');
         if (list) {

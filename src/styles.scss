@@ -28,6 +28,8 @@
         textarea {
             resize: vertical;
             max-height: 60vh;
+            height: 40px;
+            transition: height 0.5s;
         }
         input[type="text"]{
             flex-grow: none;
