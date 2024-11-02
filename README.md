@@ -47,8 +47,13 @@ collections = {
 } 
 ```
 
+---
 
+# Sidenotes
+
+I used a new CSS feature called @container. This is one of the latest additions to tools for media queries. but these media queries don't depend on screen side, but container size of elements instead. This is why the "mark completed logo" is rendered
   
+
 
 
 
