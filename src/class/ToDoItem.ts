@@ -51,18 +51,45 @@ export class ToDoItem {
                 textarea.removeAttribute('style');
                 textarea.removeAttribute('expanded');
                 expandToggle.textContent = "Expand Item";
+                this.animateExpandCollapse(false)
             } else {
                 textarea.setAttribute('style', "height: 400px");
                 textarea.setAttribute("expanded", "true");
                 expandToggle.textContent = "Collapse Item";
+                this.animateExpandCollapse(true)
             }
 
             setTimeout(() => {
-
                 this.scrollToView();
             }, 200)
         }
+    }
 
+    public animateExpandCollapse(expand: boolean): void {
+        const textarea = this.htmlNode.querySelector('textarea');
+        if (textarea) {
+            const startHeight = expand ? 0 : 400;
+            const endHeight = expand ? 400 : 0;
+            const duration = 300;
+            const startTime = performance.now();
+
+            const animate = (currentTime: number) => {
+                const elapsedTime = currentTime - startTime;
+                const progress = Math.min(elapsedTime / duration, 1);
+                const height = startHeight + (endHeight - startHeight) * progress;
+                textarea.style.height = `${height}px`;
+
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                } else {
+                    if (!expand) {
+                        textarea.removeAttribute('style');
+                    }
+                }
+            };
+
+            requestAnimationFrame(animate);
+        }
     }
 
 
