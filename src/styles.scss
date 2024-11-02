@@ -106,12 +106,15 @@
     display: grid;
     grid-template-columns: 1fr;
     height: 100%;
+    container-type: size;
+    container-name: left-sidebar-height;
     // width: 40px;
     .mark-completed{
         grid-column: span 1;
         align-self: self-start;
         text-align: center;
     }
+    
     .grid-placement{
         grid-column: span 2;
         align-self: self-start;
@@ -120,3 +123,19 @@
     }
 }
 
+
+@container left-sidebar-height (min-height: 100px) {
+    .d-none{
+        display: inline;
+    }
+
+    .left-sidebar{
+        .mark-completed{
+            label {
+                white-space: nowrap;
+                display: block !important;
+            }
+        }
+    }
+    
+}
