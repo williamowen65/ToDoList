@@ -1,6 +1,6 @@
 .todo {
     display: grid;
-    grid-template-columns: 50px 1fr 200px;
+    grid-template-columns: 110px 1fr 200px;
     justify-content: space-between;
     align-items: baseline;
     padding: 10px;
@@ -43,18 +43,37 @@
     align-self: flex-start;
 }
 .todo button {
-    background-color: #f00;
+    background-color: rgb(158, 113, 113);
+
     color: #fff;
     border: none;
     border-radius: 5px;
     // padding: 5px 10px;
-    margin-left: 10px;
     cursor: pointer;
     align-self: flex-start;
     height: 30px;
+    font-weight: bold;
+
+    &.deleteBtn{
+        margin-left: 10px;
+        background-color: #f00;
+
+    }
+
+    &.expandBtn{
+        margin-bottom: 10px;
+        background-color: rgb(188, 228, 26);
+        color: black;
+      
+    }
 }
 
 
+
+
+.d-none {
+    display: none;
+}
 .d-flex {
     display: flex;
 }
@@ -76,3 +95,21 @@
         
     }
 }
+.left-sidebar{
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 100%;
+    // width: 40px;
+    .mark-completed{
+        grid-column: span 1;
+        align-self: self-start;
+        text-align: center;
+    }
+    .expand-list{
+        grid-column: span 2;
+        align-self: self-start;
+        margin-top: auto;
+        text-align: center;
+    }
+}
+

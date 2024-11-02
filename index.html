@@ -1,52 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Webpack App</title>
-    </head>
-    <body>
-        <h1>Todo List!</h1>
-        <small>CRUD, mark completed, priority, collections. Storage</small>
+  <head>
+    <meta charset="utf-8" />
+    <title>Webpack App</title>
+  </head>
+  <body>
+    <h1>Todo List!</h1>
+    <small>CRUD, mark completed, priority, collections. Storage</small>
 
-        <div id="todoList">
-            <div id="not-completed">
-
-            <div class="todo">
-                <input type="checkbox" class="completed">
-
-                <div class="text-inputs">
-                <input type="text" class="title" placeholder="Title">
-                <textarea name="description" placeholder="Description"></textarea>
-                </div>
-                <div class="right-sidebar">
-                        <select class="priority">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                        <button class="delete">Delete</button>
-                    <div class="todo-details">Todo details</div>
-                </div>
+    <div id="todoList">
+      <div id="not-completed">
+        <div class="todo">
+          <div class="left-sidebar">
+            <div class="mark-completed">
+                <div class="d-none">Mark completed</div>
+                <input type="checkbox" class="completed" />
             </div>
+            <button class="expand-list expandBtn">expand list</button>
+          </div>
 
-            </div>
-            <div id="completed"></div>
+          <div class="text-inputs">
+            <input type="text" class="title" placeholder="Title" />
+            <textarea name="description" placeholder="Description"></textarea>
+          </div>
+          <div class="right-sidebar">
+            <select class="priority">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <button class="delete deleteBtn">Delete</button>
+            <div class="todo-details">Todo details</div>
+          </div>
         </div>
+      </div>
+      <div id="completed"></div>
+    </div>
 
-        <template>
-            <div class="todo">
-                <input type="checkbox" class="completed">
-                <input type="text" class="title">
-                <input type="number" class="priority">
-                <button class="delete">Delete</button>
-            </div>
-        </template>
-    </body>
-    
-    <script>
+    <template>
+      <div class="todo">
+        <input type="checkbox" class="completed" />
+        <input type="text" class="title" />
+        <input type="number" class="priority" />
+        <button class="delete">Delete</button>
+      </div>
+    </template>
+  </body>
 
-    
-    </script>
+  <script></script>
 </html>
