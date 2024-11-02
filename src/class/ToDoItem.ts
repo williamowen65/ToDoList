@@ -34,7 +34,7 @@ export class ToDoItem {
     updatePriorityDisplay(): void {
         const priorityElement = this.htmlNode.querySelector('select.priority') as HTMLSelectElement;
         if (priorityElement) {
-            
+            priorityElement.querySelector(`option[value="${this.priority}"]`).setAttribute('selected', 'true');
         }
     }
 
