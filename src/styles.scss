@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 50px 1fr 90px 100px;
     justify-content: space-between;
-    align-items: normal;
+    align-items: baseline;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -19,10 +19,15 @@
         margin-inline: 10px;
         input[type="text"], textarea{
             width: 100%;
-            height: 100%;
+            box-sizing: border-box;
         }
         textarea {
             resize: vertical;
+            max-height: 60vh;
+        }
+        input[type="text"]{
+            flex-grow: none;
+            height: 30px;
         }
     }
 }
