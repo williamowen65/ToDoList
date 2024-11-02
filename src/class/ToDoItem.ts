@@ -25,10 +25,6 @@ export class ToDoItem {
         this.description = ToDoItem.processDescription(data.description);
         this.index = data.index;;
 
-        const expandBtn = this.htmlNode.querySelector('.expandBtn');
-        if (expandBtn) {
-            expandBtn.addEventListener('click', () => this.toggleItem());
-        }
 
         this.addToDom();
         this.updatePriorityDisplay(); // Update priority display
@@ -52,6 +48,17 @@ export class ToDoItem {
             deleteBtn.addEventListener('click', () => {
                 this.htmlNode.remove();
             });
+        }
+
+        
+        const expandBtn = this.htmlNode.querySelector('.expandBtn');
+        if (expandBtn) {
+            expandBtn.addEventListener('click', () => this.toggleItem());
+        }
+
+        const toDoDetailsBtn = this.htmlNode.querySelector('.detailsBtn');
+        if (toDoDetailsBtn) {
+            toDoDetailsBtn.addEventListener('click', () => this.toggleItem());
         }
     }
 
@@ -232,7 +239,17 @@ export class ToDoItem {
                 <option value="high">High</option>
               </select>
               <button class="deleteBtn">Delete</button>
-              <div class="todo-details">Todo details</div>
+              <fieldset>
+                  <legend>Details</legend>
+                  Related Tasks: <input type="text" value="Task" />
+
+                  Child Tasks: <input type="text" value="Task" />
+                  </fieldset>
+              <div class="todo-details">
+                  
+                  <button class="detailsBtn">ToDo Details</button>
+                  <button class="commentsBtn">Comments</button>
+              </div>
             </div>
           </div>
         `
