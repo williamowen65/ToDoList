@@ -213,9 +213,11 @@ export class ToDoItem {
               <div class="mark-completed">
                 <b><small><label class="d-none" for="completed-task-${data.id}">Mark completed</label></small></b>
                   <input type="checkbox" class="completed" id="completed-task-${data.id}" name="completed-task-${data.id}" />
-                  <os-dial></os-dial>
-              </div>
-              <button class="grid-placement expandBtn">Expand Item</button>
+                   <div class="dial-container">
+                  <os-forum-card-vote totalvotecount="1" averagevote="10"></os-forum-card-vote>
+                </div>
+                </div>
+                <button class="grid-placement expandBtn">Expand Item</button>
             </div>
   
             <div class="text-inputs">

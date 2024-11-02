@@ -1,7 +1,6 @@
-
-footer{
+footer {
     min-height: 500px;
- }
+}
 
 .todo {
     display: grid;
@@ -13,22 +12,26 @@ footer{
     border-radius: 5px;
     background-color: #f9f9f9;
     margin-bottom: 10px;
+
     select {
         cursor: pointer;
         align-self: flex-start;
         height: 30px;
     }
 
-    div.text-inputs{
+    div.text-inputs {
         display: flex;
         flex-direction: column;
         margin-inline: 10px;
         align-self: flex-start;
-        input[type="text"], textarea{
+
+        input[type="text"],
+        textarea {
             width: 100%;
             box-sizing: border-box;
             padding: 5px;
         }
+
         textarea {
             resize: vertical;
             max-height: 60vh;
@@ -36,7 +39,8 @@ footer{
             // We don't animate this via CSS b/c we want the resize textarea to not animate when manually resized;
             // transition: height 0.5s;
         }
-        input[type="text"]{
+
+        input[type="text"] {
             flex-grow: none;
             height: 30px;
         }
@@ -44,11 +48,12 @@ footer{
 }
 
 
-.todo input[type="checkbox"]{
+.todo input[type="checkbox"] {
     scale: 1.3;
     cursor: pointer;
     align-self: flex-start;
 }
+
 .todo button {
     background-color: rgb(158, 113, 113);
 
@@ -61,17 +66,17 @@ footer{
     height: 30px;
     font-weight: bold;
 
-    &.deleteBtn{
+    &.deleteBtn {
         margin-left: 10px;
         background-color: #f00;
 
     }
 
-    &.expandBtn{
+    &.expandBtn {
         margin-bottom: 10px;
         background-color: rgb(188, 228, 26);
         color: black;
-      
+
     }
 }
 
@@ -81,41 +86,61 @@ footer{
 .d-none {
     display: none;
 }
+
 .d-flex {
     display: flex;
 }
+
 .flex-column {
     flex-direction: column;
 }
+
 .flex-row {
     flex-direction: row;
 }
 
-.right-sidebar{
+.right-sidebar {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 100%;;
+    height: 100%;
+    ;
+
     .todo-details {
         grid-column: span 2;
         text-align: center;
         align-self: self-end;
-        
+
     }
 }
-.left-sidebar{
+
+.left-sidebar {
     display: grid;
     grid-template-columns: 1fr;
+    // grid-auto-flow: dense;
     height: 100%;
     container-type: size;
     container-name: left-sidebar-height;
+
     // width: 40px;
-    .mark-completed{
+    .mark-completed {
+        // display: inline;
         grid-column: span 1;
         align-self: self-start;
         text-align: center;
+        // margin-bottom: auto;
+
+        .dial-container {
+            
+            display: none;
+            // height: 0px;
+            opacity: 0;
+            z-index: -1;
+            // margin: 0 auto;
+            transition: opacity 0.5s;
+        }
     }
-    
-    .grid-placement{
+
+    .grid-placement {
         grid-column: span 2;
         align-self: self-start;
         margin-top: auto;
@@ -125,17 +150,37 @@ footer{
 
 
 @container left-sidebar-height (min-height: 100px) {
-    .d-none{
-        display: inline;
-    }
-
-    .left-sidebar{
-        .mark-completed{
+    .left-sidebar {
+        .mark-completed {
             label {
                 white-space: nowrap;
                 display: block !important;
-            }
+            }     
         }
     }
-    
+}
+
+@container left-sidebar-height (min-height: 290px) {
+    .left-sidebar {
+        .mark-completed {
+            .dial-container {
+                display: flex;
+                margin: 20px auto;
+                justify-content: center;
+                z-index: 1;
+                height: initial;
+                animation: fadeIn 1s ease forwards;
+            }
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+        }
+
+    }
+
 }
