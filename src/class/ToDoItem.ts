@@ -44,24 +44,54 @@ export class ToDoItem {
 
     public toggleItem(): void {
         const textarea = this.htmlNode.querySelector('textarea')
+        const expandToggle = this.htmlNode.querySelector('.expandBtn');
 
         if (textarea) {
             if (textarea.hasAttribute('expanded')) {
                 textarea.removeAttribute('style');
                 textarea.removeAttribute('expanded');
+                expandToggle.textContent = "Expand Item";
             } else {
                 textarea.setAttribute('style', "height: 400px");
                 textarea.setAttribute("expanded", "true");
+                expandToggle.textContent = "Collapse Item";
             }
 
+            setTimeout(() => {
 
+                this.scrollToView();
+            }, 200)
         }
+
+    }
+
+
+    public scrollToView(): void {
+        const topOffset = 0
+        const elementPosition = this.htmlNode.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - topOffset;
+
+        console.log("scrolling to", {node: this.htmlNode, elementPosition, offsetPosition, rect: this.htmlNode.getBoundingClientRect()});
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
     }
 
     public addToDom(): void {
-        const list = document.querySelector('#todoList');
-        if (list) {
-            list.appendChild(this.htmlNode);
+        const notCompletedList = document.querySelector('#not-completed');
+        const completedList = document.querySelector('#completed');
+
+        if (this.complete) {
+            if (completedList) {
+                completedList.appendChild(this.htmlNode);
+            }
+        } else {
+            if (notCompletedList) {
+                notCompletedList.appendChild(this.htmlNode);
+            }
         }
     }
+   
 }

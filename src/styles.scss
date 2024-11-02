@@ -1,3 +1,8 @@
+
+#not-completed, #completed {
+    min-height: 500px;
+ }
+
 .todo {
     display: grid;
     grid-template-columns: 110px 1fr 200px;
@@ -8,6 +13,8 @@
     border-radius: 5px;
     background-color: #f9f9f9;
     margin-bottom: 10px;
+
+
 
     select {
         cursor: pointer;
