@@ -268,6 +268,9 @@ export class ToDoItem {
                 <option value="Task2">Task2</option>
               </select>
               </fieldset>
+              <fieldset id="top-comment"><legend>Top Comment</legend>
+                <button class="commentsBtn">View more comments</button>
+            </fieldset>
               <div class="todo-details">
               
               <button class="detailsBtn">ToDo Details</button>
