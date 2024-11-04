@@ -17,6 +17,7 @@ footer {
         cursor: pointer;
         align-self: flex-start;
         height: 30px;
+        width: 100%;
     }
 
     div.text-inputs {
@@ -100,16 +101,19 @@ footer {
 }
 
 .right-sidebar {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 33px;
+    display: flex;
+    flex-direction: column;
+    justify-content: inherit;
+    // display: grid;
+    // grid-template-columns: 1fr 1fr;
+    // grid-template-rows: 33px;
     height: 100%;
     ;
 
     .todo-details, fieldset {
         grid-column: span 2;
         text-align: center;
-        align-self: self-end;
+        // align-self: self-end;
 
     }
 }
@@ -197,6 +201,7 @@ footer {
     .detailsBtn{
         background-color: transparent;
         color: black;
+        margin-top: auto;
     }
 
 

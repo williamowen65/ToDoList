@@ -247,6 +247,8 @@ export class ToDoItem {
               <textarea name="description" placeholder="Description" >${data.description}</textarea>
             </div>
             <div class="right-sidebar">
+            <div>
+            <div class="d-flex">
               <select class="priority">
             <!-- selected assigned by js -->
             <option value="low">Low</option>
@@ -254,7 +256,8 @@ export class ToDoItem {
             <option value="high">High</option>
               </select>
               <button class="deleteBtn">Delete</button>
-              <fieldset id="details">
+            </div>
+ <fieldset id="details">
               <legend>Details</legend>
               <div>Related Tasks: </div>
               
@@ -271,10 +274,12 @@ export class ToDoItem {
               <fieldset id="top-comment"><legend>Top Comment</legend>
                 <button class="commentsBtn">View more comments</button>
             </fieldset>
-              <div class="todo-details">
-              
+            </div>
+
+
+             
+              <div class="todo-details"> 
               <button class="detailsBtn">ToDo Details</button>
-              <button class="commentsBtn">Comments</button>
               </div>
             </div>
           </div>
