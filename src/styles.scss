@@ -235,7 +235,7 @@ footer {
 
 header {
     position: sticky;
-    z-index: 1;
+    z-index: 3;
     top:0px;
     background-color: white;
     height: 60px;
@@ -251,6 +251,10 @@ header {
         position: sticky;
         top: 0px;
         z-index: 2;
+        background-color: white;
+        // display: inline;
+        height: 59px;
+        // padding: 5px;
     }
 }
 

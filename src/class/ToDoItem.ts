@@ -153,7 +153,7 @@ export class ToDoItem {
     }
 
     public scrollToView(): void {
-        const topOffset = 0
+        const topOffset = 60;
         const elementPosition = this.htmlNode.getBoundingClientRect().top + window.pageYOffset;
         const offsetPosition = elementPosition - topOffset;
 
