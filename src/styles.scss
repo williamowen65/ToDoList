@@ -12,6 +12,9 @@ footer {
     border-radius: 5px;
     background-color: #f9f9f9;
     margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+
 
     select {
         cursor: pointer;
@@ -247,7 +250,8 @@ header {
 }
 
 #todoList{
-    h1 {
+    .sub-header{}
+    .sub-header {
         position: sticky;
         top: 0px;
         z-index: 2;
@@ -255,6 +259,12 @@ header {
         // display: inline;
         height: 59px;
         // padding: 5px;
+        display: flex;
+        align-items: center;
+        small{
+            margin-left:50px;
+            font-weight: bold;
+        }
     }
 }
 
