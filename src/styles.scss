@@ -110,7 +110,7 @@ footer {
     height: 100%;
     ;
 
-    .todo-details, fieldset {
+    .right-side-bottom, fieldset {
         grid-column: span 2;
         text-align: center;
         // align-self: self-end;
@@ -225,6 +225,10 @@ footer {
         }
         .detailsBtn {
             display: none;
+        }
+        .actionsBtn{
+            display: block !important;
+            margin: auto;
         }
     }
 }

@@ -277,8 +277,10 @@ export class ToDoItem {
             </div>
 
 
+
              
-              <div class="todo-details"> 
+              <div class="right-side-bottom"> 
+                <button class="d-none actionsBtn">View Actions</button>
               <button class="detailsBtn">ToDo Details</button>
               </div>
             </div>
