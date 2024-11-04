@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "jquery": "^3.7.1",
-    "os-ui-components": "^1.0.37",
+    "os-ui-components": "^1.0.38",
     "select2": "^4.1.0-rc.0"
   }
 }
