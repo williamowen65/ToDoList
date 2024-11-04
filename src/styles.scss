@@ -233,6 +233,27 @@ footer {
     }
 }
 
+header {
+    position: sticky;
+    z-index: 1;
+    top:0px;
+    background-color: white;
+    height: 60px;
+    display: flex;
+    justify-content: end;
+    padding: 10px;
+    box-sizing: border-box;
+    float: right;
+}
+
+#todoList{
+    h1 {
+        position: sticky;
+        top: 0px;
+        z-index: 2;
+    }
+}
+
 
 
 

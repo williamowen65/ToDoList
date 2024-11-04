@@ -229,6 +229,9 @@ export class ToDoItem {
 
     static createTodoItem(data: TodoItemData): ToDoItem {
 
+        /*
+         <button class="deleteBtn">Delete</button>
+        */
         const template = `
         <div class="todo">
             <div class="left-sidebar">
@@ -255,7 +258,7 @@ export class ToDoItem {
             <option value="medium">Medium</option>
             <option value="high">High</option>
               </select>
-              <button class="deleteBtn">Delete</button>
+            
             </div>
  <fieldset id="details">
               <legend>Details</legend>
