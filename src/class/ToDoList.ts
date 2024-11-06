@@ -53,7 +53,16 @@ export class ToDoList {
                     AddToDo.classList.remove('fadeIn');
                 }, 1000)
             }
+        });
 
+        // Close add todo form
+        const closeAddToDo = document.querySelector('#AddToDo .close') as HTMLElement;
+        closeAddToDo.addEventListener('click', () => {
+            AddToDo.classList.add('fadeOut');
+            setTimeout(() => {
+                AddToDo.classList.remove('open');
+                AddToDo.classList.remove('fadeOut');
+            }, 4000);
         });
     }
 

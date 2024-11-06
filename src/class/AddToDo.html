@@ -1,6 +1,25 @@
-    <div id="AddToDo">
+    <div id="AddToDo" class="open">
         <div class="content">
+            <header>
+                <div class="header-label">
+                    <h2 class="form-title">Add a Todo</h2>
+                  
+                </div>
+
+                <div><i class="fa fa-close close"></i></div>
+            </header>
             <input type="text" placeholder="title">
-            <textarea placeholder="description"></textarea>  
+            <textarea placeholder="description"></textarea>
+            <footer>
+                <select>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+                <div class="button-container">
+                    
+                    <button class="action">Save</button>
+                </div>
+            </footer>  
         </div>
      </div>
