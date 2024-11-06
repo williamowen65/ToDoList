@@ -20,6 +20,7 @@
     "css-loader": "^7.1.2",
     "html-webpack-plugin": "^5.6.3",
     "prettier": "^3.3.3",
+    "raw-loader": "^4.0.2",
     "sass": "^1.80.3",
     "sass-loader": "^16.0.2",
     "style-loader": "^4.0.0",
@@ -32,6 +33,7 @@
   },
   "dependencies": {
     "jquery": "^3.7.1",
+    "lit-html": "^3.2.1",
     "os-ui-components": "^1.0.38",
     "select2": "^4.1.0-rc.0"
   }

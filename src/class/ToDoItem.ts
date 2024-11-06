@@ -1,5 +1,9 @@
 import $ from 'jquery';
 import "select2"
+import html from './test.html';
+
+console.log({html})
+
 
 export type TodoItemData = {
     id: string;
@@ -53,7 +57,7 @@ export class ToDoItem {
             });
         }
 
-        
+
         const expandBtn = this.htmlNode.querySelector('.expandBtn');
         if (expandBtn) {
             expandBtn.addEventListener('click', () => this.toggleItem());
@@ -231,12 +235,12 @@ export class ToDoItem {
 
         /*
          <button class="deleteBtn">Delete</button>
-        */
-        const template = `
+         // */
+         const template = `
         <div class="todo">
             <div class="left-sidebar">
               <div class="mark-completed">
-            <b><small><label class="d-none" for="completed-task-${data.id}">Mark completed</label></small></b>
+                <b><small><label class="d-none" for="completed-task-${data.id}">Mark completed</label></small></b>
               <input type="checkbox" class="completed" id="completed-task-${data.id}" name="completed-task-${data.id}" />
                <div class="dial-container">
               <os-forum-card-vote totalvotecount="1" averagevote="10"></os-forum-card-vote>
@@ -284,11 +288,21 @@ export class ToDoItem {
 
              
               <div class="right-side-bottom"> 
-                <button class="d-none actionsBtn">View Actions</button>
+                <div class="d-none actionsBtn">
+                    <div>
+                    </div>
+                    <div class="control"> <--> </div>
+                </div>
               <button class="detailsBtn">ToDo Details</button>
               </div>
             </div>
+            
+
+            <div>
+            
+            </div>
           </div>
+          
         `
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = template.trim();
