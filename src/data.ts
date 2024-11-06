@@ -83,8 +83,18 @@ export const todoItems: TodoItemData[] = [
     }
 ];
 
+type Quote = {
+    text: string;
+    author: string;
+    note?: string;
+}
 
-export const quotes = {
+type Quotes = {
+    "not-completed": Quote[];
+    "completed": Quote[];
+}
+
+export const quotes: Quotes = {
     "not-completed":  [
         {
           "text": "A year from now you may wish you had started today.",
@@ -146,8 +156,37 @@ export const quotes = {
       ],
       "completed": [
         {
-            "text": "I always give 100% at work: 13% Monday, 22% Tuesday, 26% Wednesday, 35% Thursday, and 4% Friday.",
-            "author": "Unknown"
+            "text": "There is nothing quite as satisfying as crossing the last item off your to-do list.",
+            "author": "Anonymous"
+          },
+          {
+            "text": "Done is better than perfect.",
+            "author": "Sheryl Sandberg"
+          },
+          {
+            "text": "The reward of a thing well done is having done it.",
+            "author": "Ralph Waldo Emerson"
+          },
+          {
+            "text": "Happiness is finishing all the tasks you started with.",
+            "author": "Anonymous"
+          },
+          {
+            "text": "It always seems impossible until it’s done.",
+            "author": "Nelson Mandela"
+          },
+          {
+            "text": "The satisfaction of hard work is felt best after the work is done.",
+            "author": "Anonymous"
+          },
+          {
+            "text": "The greatest pleasure in life is doing what people say you cannot do.",
+            "author": "Walter Bagehot"
+          },
+          {
+            "text": "Done feels amazing.",
+            "author": "Anonymous"
           }
       ]
 }
+

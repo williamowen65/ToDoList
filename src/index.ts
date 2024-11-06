@@ -11,4 +11,26 @@ todoItems.forEach((item: TodoItemData) => {
     todoList.addTask(item);
 })
 
-console.log({todoList})
+setQuotes()
+function setQuotes(){
+
+    Object.keys(quotes).forEach((key: "completed" | "not-completed") => {
+        let quoteIndex = Math.floor(Math.random() * quotes[key].length);
+        console.log({key, quoteIndex});
+        const quoteElement = document.querySelector(`#${key} .quote`) as HTMLElement;
+            const theQuotes = quotes[key]
+        
+            const template = `
+                <div class="quote-text">"
+                    ${ quotes[key][quoteIndex].text}
+                     "
+                </div>
+                <small>- ${quotes[key][quoteIndex].author}</small>
+            `;
+        quoteElement.innerHTML = template;
+    })
+}
+
+
+
+console.log({todoList});

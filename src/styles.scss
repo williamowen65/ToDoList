@@ -113,7 +113,8 @@ footer {
     height: 100%;
     ;
 
-    .right-side-bottom, fieldset {
+    .right-side-bottom,
+    fieldset {
         grid-column: span 2;
         text-align: center;
         // align-self: self-end;
@@ -138,7 +139,7 @@ footer {
         // margin-bottom: auto;
 
         .dial-container {
-            
+
             display: none;
             // height: 0px;
             opacity: 0;
@@ -163,7 +164,7 @@ footer {
             label {
                 white-space: nowrap;
                 display: block !important;
-            }     
+            }
         }
     }
 }
@@ -180,7 +181,7 @@ footer {
                 opacity: 1;
                 // animation: fadeIn 1s ease forwards;
             }
-           
+
         }
 
     }
@@ -188,20 +189,22 @@ footer {
 }
 
 .right-sidebar {
-  
+
     container-type: size; // <--- DEFINING LOCAL MEDIA QUERY
     container-name: right-sidebar-height;
 
-    .commentsBtn,  fieldset{
+    .commentsBtn,
+    fieldset {
         display: none;
         height: 0px;
         opacity: 0;
         z-index: -1;
         // margin: 0 auto;
         transition: opacity 0.5s;
-    
+
     }
-    .detailsBtn{
+
+    .detailsBtn {
         background-color: transparent;
         color: black;
         margin-top: auto;
@@ -209,27 +212,31 @@ footer {
 
 
     @container right-sidebar-height (min-height: 300px) {
-        .commentsBtn{
+        .commentsBtn {
             display: inline-block;
-            opacity: 1;;
+            opacity: 1;
+            ;
             // margin: 20px auto;
             justify-content: center;
             z-index: 1;
             height: initial;
             // animation: fadeIn 1s ease forwards;
         }
-        fieldset{
+
+        fieldset {
             display: block;
             opacity: 1;
             z-index: 1;
             height: initial;
-            margin-bottom: auto ;
+            margin-bottom: auto;
             // animation: fadeIn 1s ease forwards;
         }
+
         .detailsBtn {
             display: none;
         }
-        .actionsBtn{
+
+        .actionsBtn {
             display: block !important;
             margin: auto;
         }
@@ -239,7 +246,7 @@ footer {
 header {
     position: sticky;
     z-index: 3;
-    top:0px;
+    top: 0px;
     background-color: white;
     height: 60px;
     display: flex;
@@ -249,8 +256,7 @@ header {
     float: right;
 }
 
-#todoList{
-    .sub-header{}
+#todoList {
     .sub-header {
         position: sticky;
         top: 0px;
@@ -261,9 +267,30 @@ header {
         // padding: 5px;
         display: flex;
         align-items: center;
-        small{
-            margin-left:50px;
-            font-weight: bold;
+        max-width: calc(100% - 101px);
+        h1 {
+            white-space: nowrap;
+        }
+
+        .quote {
+            line-height: 15px;
+            position: relative;
+            margin-left: 50px;
+
+            small {
+                font-weight: bold;
+                color: rgb(48, 64, 54);
+                position: absolute;
+                ;
+                right: 30px;
+            }
+        }
+
+        .button-containers {
+            flex-grow: 1;
+            display: flex;
+            justify-content: end;
+            height: 66%; // makes the button height match the Add a Todo button
         }
     }
 }
@@ -275,6 +302,7 @@ header {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
