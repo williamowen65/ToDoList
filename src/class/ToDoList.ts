@@ -1,4 +1,5 @@
 import { ToDoItem, TodoItemData } from "./ToDoItem";
+import AddToDoHtml from "./AddToDo.html";
 
 export class ToDoList {
     private tasks: TodoItemData[];
@@ -13,6 +14,7 @@ export class ToDoList {
 
         }
 
+        //Extract to method "setting up event listeners"
         this.list.addEventListener('click', (event) => {
             let target = event.target as HTMLElement;
             if(target.closest("input[type='checkbox']")){
@@ -29,8 +31,17 @@ export class ToDoList {
 
               console.log('checkbox clicked', {actionBtn});
             }
-            
         })
+
+        // Add html to the page for add TodoItem
+        console.log({AddToDoHtml})
+        document.querySelector(".createTodo").insertAdjacentHTML('afterbegin', AddToDoHtml);
+        // on click button#btnAddTodo set open class on #AddToDo    
+        const btnAddTodo = document.querySelector('#btnAddTodo') as HTMLElement;
+        const AddToDo = document.querySelector('#AddToDo') as HTMLElement;
+        btnAddTodo.addEventListener('click', () => {
+            AddToDo.classList.toggle('open');
+        });
     }
 
     addTask(task: TodoItemData): void {

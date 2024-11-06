@@ -31,6 +31,7 @@ header, .sub-header{
 }
 
 .todo {
+    overflow-x: hidden;
     display: grid;
     grid-template-columns: 110px 1fr 200px;
     justify-content: space-between;
@@ -364,5 +365,35 @@ header {
     transform: translateX(100%);
     &.open{
         transform: translateX(0);
+    }
+}
+
+
+
+header{
+    // position: relative;
+    // z-index: 2;
+    #AddToDo{
+        width: calc(100vw - 36px);
+        // min-height: 100vh;
+        // display: block;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        // margin: 20px;
+        background-color: #007bff;
+        position: absolute;
+        right: 0;
+        bottom: 120%;
+        padding: 10px;;
+        // top: 0px;
+        // position: fixed;
+        // // z-index: 2;
+        // // top:0;
+        // transform: translateY(-100%);
+        transition: bottom 0.5s;
+        &.open{
+            bottom: -120%;
+        }
     }
 }
