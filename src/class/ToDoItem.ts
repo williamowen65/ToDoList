@@ -88,6 +88,7 @@ export class ToDoItem {
                 const target = event.target as HTMLSelectElement;
                 this.priority = target.value;
                 this.updateTodo()
+                this.scrollToView()
             });
         }
     }
