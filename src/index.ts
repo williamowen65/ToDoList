@@ -34,3 +34,22 @@ function setQuotes(){
 
 
 console.log({todoList});
+
+
+/// Hack reacting to screen window size
+function setVhProperty() {
+    // This code sets a global css variable to the height of the window
+    let vh = window.innerHeight;
+    // calculateOffset
+    let offset = ((vh * 0.35)) + 0; // @TODO Calculate this function manually
+    // 
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    document.documentElement.style.setProperty('--offset', `${offset}px`);
+}
+
+// Set the --vh property on load
+setVhProperty();
+
+// Update the --vh property on resize
+window.addEventListener('resize', setVhProperty);
+window.addEventListener('load', setVhProperty);

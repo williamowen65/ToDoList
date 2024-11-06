@@ -409,6 +409,7 @@ header {
             all: revert;
             display: flex;
             justify-content: space-between;
+            margin-top: 10px;
         }
 
         .content {
@@ -423,12 +424,18 @@ header {
             // padding: 0px;
             textarea {
                 resize: vertical;
-                max-height: 70vh;
+
+                // @TODO - This needs a hack to get the textarea to resize properly
+                // max-height: calc(var(--vh) - var(--offset)); 
+                // max-height: calc(var(--vh)  ); 
+                // Range 
+                // 400px height = calc(63.1vh - 60px)
+                // 220px height = calc(63.1 -120px)
+                // Laptop screen height = 70vh
             }
 
             .button-container{
-               text-align: right;
-               margin-top: 10px;;
+               text-align: right;;
             }
         }
     }

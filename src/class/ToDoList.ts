@@ -64,6 +64,30 @@ export class ToDoList {
                 AddToDo.classList.remove('fadeOut');
             }, 4000);
         });
+
+        // Submit new todo item
+        const form = document.querySelector('#AddToDo form') as HTMLFormElement;
+        form.addEventListener('submit', (event) => {
+           
+            event.preventDefault();
+            const formData = new FormData(form);
+            const newTask: TodoItemData = {
+                id: Math.random().toString(36).substr(2, 9),
+                index: this.tasks.length,
+                description: formData.get('description') as string,
+                priority: formData.get('priority') as string,
+                complete: 'incomplete',
+                task: formData.get('task') as string
+            };
+            console.log('form submitted', {newTask});
+            this.addTask(newTask);
+            form.reset();
+            AddToDo.classList.add('fadeOut');
+            setTimeout(() => {
+                AddToDo.classList.remove('open');
+                AddToDo.classList.remove('fadeOut');
+            }, 4000);
+        });
     }
 
     addTask(task: TodoItemData): void {
