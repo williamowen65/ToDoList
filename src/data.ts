@@ -80,6 +80,62 @@ export const todoItems: TodoItemData[] = [
         priority: "medium",
         description: "Plan the itinerary for the upcoming vacation",
         index: 9
+    },
+    {
+      id: "11",
+      task: "Wash the car",
+      complete: "complete",
+      priority: "low",
+      description: "Wash and wax the car",
+      index: 10
+    },
+    {
+      id: "12",
+      task: "Write a blog post",
+      complete: "complete",
+      priority: "medium",
+      description: "Write and publish a new blog post",
+      index: 11
+    },
+    {
+      id: "13",
+      task: "Organize the garage",
+      complete: "complete",
+      priority: "high",
+      description: "Clean and organize the garage",
+      index: 12
+    },
+    {
+      id: "14",
+      task: "Prepare presentation",
+      complete: "complete",
+      priority: "high",
+      description: "Prepare slides for the upcoming presentation",
+      index: 13
+    },
+    {
+      id: "15",
+      task: "Update resume",
+      complete: "complete",
+      priority: "medium",
+      description: "Update resume with recent job experience",
+      index: 14
+    },
+    {
+      id: "16",
+      task: "Backup files",
+      complete: "complete",
+      priority: "low",
+      description: "Backup important files to external drive",
+      index: 15
+    },
+    {
+      id: "17",
+      task: "Schedule doctor appointment",
+      complete: "complete",
+      priority: "medium",
+      description: "Schedule annual check-up with doctor",
+      index: 16
     }
 ];
 
