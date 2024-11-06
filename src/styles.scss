@@ -391,6 +391,9 @@ header {
         width: calc(100vw - 36px);
         // min-height: 100vh;
         // display: block;
+        // margin: 20px;
+
+        margin-left: 20px;
 
         position: absolute;
         right: 10px;
@@ -449,9 +452,8 @@ header {
             display: flex;
             justify-content: center;
             flex-direction: column;
-            // margin: 20px;
             background-color: #007bff;
-
+            margin-left: 20px;
             // height: 0px;
             // padding: 0px;
             textarea {

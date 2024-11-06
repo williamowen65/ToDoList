@@ -15,7 +15,7 @@ export const todoItems: TodoItemData[] = [
         complete: "complete",
         priority: "medium",
         description: "Wash, dry, and fold the laundry",
-        index: 1
+        index: 1,
     },
     {
         id: "3",
