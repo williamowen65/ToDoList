@@ -251,13 +251,14 @@ export class ToDoItem {
             </div>
             <div class="right-sidebar">
             <div>
-            <div class="d-flex">
+            <div class="top-row">
               <select class="priority">
             <!-- selected assigned by js -->
             <option value="low">Low</option>
             <option value="medium">Medium</option>
             <option value="high">High</option>
               </select>
+              <i class="fa fa-hamburger"></i>
             
             </div>
  <fieldset id="details">

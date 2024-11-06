@@ -25,6 +25,7 @@ header, .sub-header{
 
 
 
+
 .sub-header button{
     margin-right: 2px;
 }
@@ -139,6 +140,18 @@ header, .sub-header{
     // grid-template-rows: 33px;
     height: 100%;
     ;
+
+    .top-row{
+        display: flex;
+        align-items: center;
+        i {
+            margin: 5px;
+            cursor: pointer;
+            &:hover{
+                color: #007bff;
+            }
+        }
+    }
 
     .right-side-bottom,
     fieldset {
