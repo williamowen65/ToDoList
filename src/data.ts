@@ -4,7 +4,7 @@ export const todoItems: TodoItemData[] = [
     {
         id: "1",
         task: "Take out trash",
-        complete: "incomplete",
+        complete: "complete",
         priority: "low",
         description: "Take the trash out to the curb for pickup",
         index: 0
@@ -12,7 +12,7 @@ export const todoItems: TodoItemData[] = [
     {
         id: "2",
         task: "Do laundry",
-        complete: "incomplete",
+        complete: "complete",
         priority: "medium",
         description: "Wash, dry, and fold the laundry",
         index: 1
@@ -20,7 +20,7 @@ export const todoItems: TodoItemData[] = [
     {
         id: "3",
         task: "Walk the dog",
-        complete: "incomplete",
+        complete: "complete",
         priority: "high",
         description: "Take the dog for a 30-minute walk around the neighborhood",
         index: 2
@@ -36,7 +36,7 @@ export const todoItems: TodoItemData[] = [
     {
         id: "5",
         task: "Clean the house",
-        complete: "incomplete",
+        complete: "complete",
         priority: "high",
         description: "Vacuum, dust, and mop the entire house",
         index: 4
@@ -52,7 +52,7 @@ export const todoItems: TodoItemData[] = [
     {
         id: "7",
         task: "Read a book",
-        complete: "incomplete",
+        complete: "complete",
         priority: "low",
         description: "Read at least 50 pages of a book",
         index: 6
@@ -60,7 +60,7 @@ export const todoItems: TodoItemData[] = [
     {
         id: "8",
         task: "Exercise",
-        complete: "incomplete",
+        complete: "complete",
         priority: "medium",
         description: "Do a 30-minute workout",
         index: 7
@@ -76,7 +76,7 @@ export const todoItems: TodoItemData[] = [
     {
         id: "10",
         task: "Plan vacation",
-        complete: "incomplete",
+        complete: "complete",
         priority: "medium",
         description: "Plan the itinerary for the upcoming vacation",
         index: 9

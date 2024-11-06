@@ -112,7 +112,7 @@ export class ToDoList {
 
 
                     } else {
-                        // do nothing
+                        // do nothing b/c no item is checked, button should be disabled.
                     }
                 });
             });

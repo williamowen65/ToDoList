@@ -7,6 +7,29 @@ footer {
     min-height: 500px;
 }
 
+.list-section {
+    .list-container{
+        &:empty::before{
+            content: "No todos to display";
+            display: block;
+            // width: 12px;
+
+            white-space: nowrap;
+            text-align: center;
+            height: 100px;
+            width: 300px;
+            margin: auto;
+            color: black;
+            border: 1px solid black;
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+    }
+}
+
 header,
 .sub-header {
     button {
