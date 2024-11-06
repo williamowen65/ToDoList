@@ -1,8 +1,8 @@
 import $ from 'jquery';
 import "select2"
-import html from './test.html';
+import toDo_html from './ToDoItem.html';
+import { TemplateEngine } from '../utils/TemplateEngine';
 
-console.log({html})
 
 
 export type TodoItemData = {
@@ -66,6 +66,19 @@ export class ToDoItem {
         const toDoDetailsBtn = this.htmlNode.querySelector('.detailsBtn');
         if (toDoDetailsBtn) {
             toDoDetailsBtn.addEventListener('click', () => this.toggleItem());
+        }
+
+        // listener on sidemenu-toggle button to open and close the side menu
+        const sideMenuToggle = this.htmlNode.querySelector('.sidemenu-toggle');
+        if (sideMenuToggle) {
+            console.log({sideMenuToggle})
+            sideMenuToggle.addEventListener('click', () => {
+                const sideMenu = this.htmlNode.querySelector('.sidemenu');
+                console.log("CLick", {sideMenu})
+                if (sideMenu) {
+                    sideMenu.classList.toggle('open');
+                }
+            });
         }
     }
 
@@ -233,77 +246,9 @@ export class ToDoItem {
 
     static createTodoItem(data: TodoItemData): ToDoItem {
 
-        /*
-         <button class="deleteBtn">Delete</button>
-         // */
-         const template = `
-        <div class="todo">
-            <div class="left-sidebar">
-              <div class="mark-completed">
-                <b><small><label class="d-none" for="completed-task-${data.id}">Mark completed</label></small></b>
-              <input type="checkbox" class="completed" id="completed-task-${data.id}" name="completed-task-${data.id}" />
-               <div class="dial-container">
-              <os-forum-card-vote totalvotecount="1" averagevote="10"></os-forum-card-vote>
-            </div>
-            </div>
-            <button class="grid-placement expandBtn">Expand Item</button>
-            </div>
-      
-            <div class="text-inputs">
-              <input type="text" class="title" placeholder="Title" value="${data.task}"/>
-              <textarea name="description" placeholder="Description" >${data.description}</textarea>
-            </div>
-            <div class="right-sidebar">
-            <div>
-            <div class="top-row">
-              <select class="priority">
-            <!-- selected assigned by js -->
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-              </select>
-              <i class="fa fa-hamburger"></i>
-            
-            </div>
- <fieldset id="details">
-              <legend>Details</legend>
-              <div>Related Tasks: </div>
-              
-              <select id="related-task=${data.id}">
-                <option value="Task1">Task1</option>
-                <option value="Task2">Task2</option>
-              </select>
-              <div>Child Tasks: </div>
-              <select> id="child-task=${data.id}"
-                <option value="Task1">Task1</option>
-                <option value="Task2">Task2</option>
-              </select>
-              </fieldset>
-              <fieldset id="top-comment"><legend>Top Comment</legend>
-                <button class="commentsBtn">View more comments</button>
-            </fieldset>
-            </div>
+        
+         const template = TemplateEngine.createTemplate(toDo_html, data);
 
-
-
-             
-              <div class="right-side-bottom"> 
-                <div class="d-none actionsBtn">
-                    <div>
-                    </div>
-                    <div class="control"> <--> </div>
-                </div>
-              <button class="detailsBtn">ToDo Details</button>
-              </div>
-            </div>
-            
-
-            <div>
-            
-            </div>
-          </div>
-          
-        `
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = template.trim();
         const htmlNode = tempDiv.firstElementChild as HTMLElement;
