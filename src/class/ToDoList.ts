@@ -81,9 +81,10 @@ export class ToDoList {
                 task: formData.get('task') as string
             };
             console.log('form submitted', { newTask });
-            this.addTask(newTask);
+            const todoItem = this.addTask(newTask);
             form.reset();
             AddToDo.classList.add('fadeOut');
+            todoItem.scrollToView()
             setTimeout(() => {
                 AddToDo.classList.remove('open');
                 AddToDo.classList.remove('fadeOut');
@@ -108,6 +109,9 @@ export class ToDoList {
                         item.complete = item.complete === true ? false : true;
                         // Updates the position of the toDo Item
                         item.updateTodo();
+                        //@ts-ignore
+                        item.htmlNode.querySelector(".markCompleteText").innerText = item.complete ? "Mark Incomplete" : "Mark Complete";
+                        item.scrollToView()
                         checkbox.checked = false;
 
 
@@ -119,11 +123,12 @@ export class ToDoList {
         });
     }
 
-    addTask(task: TodoItemData): void {
+    addTask(task: TodoItemData): ToDoItem {
         this.tasks.push(task);
         this.tasks.sort(this.compoundSort);
         this.ToDoItemInstances[task.id] = ToDoItem.createTodoItem(task);
         this.idIndex++;
+        return this.ToDoItemInstances[task.id]
     }
 
     removeTask(task: TodoItemData): void {

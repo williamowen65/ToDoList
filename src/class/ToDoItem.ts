@@ -268,6 +268,8 @@ export class ToDoItem {
 
     static createTodoItem(data: TodoItemData): ToDoItem {
 
+        //@ts-ignore
+        data.markCompleteText = data.complete === "complete" ? "Mark Incomplete" : "Mark Complete";
         
          const template = TemplateEngine.createTemplate(toDo_html, data);
 

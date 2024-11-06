@@ -6,6 +6,11 @@ body{
 footer {
     min-height: 500px;
 }
+#main-header{
+    all: revert;
+    display: flex ;
+    justify-content: space-between;
+}
 
 .list-section {
     .list-container{
