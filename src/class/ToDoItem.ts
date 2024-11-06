@@ -182,6 +182,14 @@ export class ToDoItem {
         });
     }
 
+    public updateTodo(): void {
+
+        // The data has already been set, we just need to rerender this item in the correct spot
+        this.htmlNode.remove();
+        this.addToDom();
+        this.updatePriorityDisplay();
+    }
+
     // When a TodoItem is creates, it should place itself in the correct spot with rending only its content.
     // No rerendering of any other content.
     // Uses an index property to determine where it should be placed in the list.

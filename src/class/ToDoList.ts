@@ -5,6 +5,7 @@ export class ToDoList {
     private tasks: TodoItemData[];
     list: HTMLElement;
     ToDoItemInstances: { [key: string]: ToDoItem } = {}
+    idIndex: number = 0;
 
     constructor(listSelector: string) {
         this.tasks = [];
@@ -49,7 +50,7 @@ export class ToDoList {
             } else {
                 AddToDo.classList.add('fadeIn');
                 AddToDo.classList.add('open');
-                setTimeout(()=>{
+                setTimeout(() => {
                     AddToDo.classList.remove('fadeIn');
                 }, 1000)
             }
@@ -68,18 +69,18 @@ export class ToDoList {
         // Submit new todo item
         const form = document.querySelector('#AddToDo form') as HTMLFormElement;
         form.addEventListener('submit', (event) => {
-           
+
             event.preventDefault();
             const formData = new FormData(form);
             const newTask: TodoItemData = {
-                id: Math.random().toString(36).substr(2, 9),
+                id: this.idIndex.toString(),
                 index: this.tasks.length,
                 description: formData.get('description') as string,
                 priority: formData.get('priority') as string,
                 complete: 'incomplete',
                 task: formData.get('task') as string
             };
-            console.log('form submitted', {newTask});
+            console.log('form submitted', { newTask });
             this.addTask(newTask);
             form.reset();
             AddToDo.classList.add('fadeOut');
@@ -88,12 +89,41 @@ export class ToDoList {
                 AddToDo.classList.remove('fadeOut');
             }, 4000);
         });
+
+        // Event listener for the moving items from completed to not completed, vice versa
+        const listSections = document.querySelectorAll('.list-section');
+        listSections.forEach((section) => {
+            const actionBtn = section.querySelector('button.toggle-complete') as HTMLButtonElement;
+            actionBtn.addEventListener('click', () => {
+                const checkboxes = section.querySelectorAll("input[type='checkbox']") as NodeListOf<HTMLInputElement>;
+                checkboxes.forEach((checkbox) => {
+                    // const item = this.ToDoItemInstances[checkbox.value];
+                    console.log({ checkbox, todos: this.ToDoItemInstances })
+                    if (checkbox.checked) {
+                        const todoId = checkbox.closest('.todo').getAttribute('data-id');
+                        // Update data and move Item
+                        const item = this.ToDoItemInstances[todoId];
+
+
+                        item.complete = item.complete === true ? false : true;
+                        // Updates the position of the toDo Item
+                        item.updateTodo();
+                        checkbox.checked = false;
+
+
+                    } else {
+                        // do nothing
+                    }
+                });
+            });
+        });
     }
 
     addTask(task: TodoItemData): void {
         this.tasks.push(task);
         this.tasks.sort(this.compoundSort);
         this.ToDoItemInstances[task.id] = ToDoItem.createTodoItem(task);
+        this.idIndex++;
     }
 
     removeTask(task: TodoItemData): void {
