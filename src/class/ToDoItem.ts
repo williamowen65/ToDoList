@@ -80,6 +80,16 @@ export class ToDoItem {
                 }
             });
         }
+
+        // Listener on priority select element
+        const prioritySelect = this.htmlNode.querySelector('select.priority');
+        if (prioritySelect) {
+            prioritySelect.addEventListener('change', (event) => {
+                const target = event.target as HTMLSelectElement;
+                this.priority = target.value;
+                this.updateTodo()
+            });
+        }
     }
 
     public setHtmlNode(htmlNode: HTMLElement): void {
@@ -189,6 +199,9 @@ export class ToDoItem {
         this.addToDom();
         this.updatePriorityDisplay();
     }
+
+
+    
 
     // When a TodoItem is creates, it should place itself in the correct spot with rending only its content.
     // No rerendering of any other content.
