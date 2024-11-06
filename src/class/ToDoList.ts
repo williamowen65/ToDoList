@@ -12,6 +12,25 @@ export class ToDoList {
         if (this.list && this.tasks.length > 0) {
 
         }
+
+        this.list.addEventListener('click', (event) => {
+            let target = event.target as HTMLElement;
+            if(target.closest("input[type='checkbox']")){
+                const listSection =target.closest('.list-section')
+                // Check if any of the checkboxes are checked
+                const checkboxes = listSection.querySelectorAll("input[type='checkbox']") as NodeListOf<HTMLInputElement>;
+                const checked = Array.from(checkboxes).some((checkbox) => checkbox.checked);
+                const actionBtn = listSection.querySelector("button") as HTMLButtonElement;
+                if(checked){
+                    actionBtn.disabled = false;
+                } else {
+                    actionBtn.disabled = true;
+                }
+
+              console.log('checkbox clicked', {actionBtn});
+            }
+            
+        })
     }
 
     addTask(task: TodoItemData): void {
@@ -51,6 +70,10 @@ export class ToDoList {
         // If priorities are equal, compare by index
         return a.index - b.index;
     }
+
+
+
+
 }
 
 export default ToDoList;
