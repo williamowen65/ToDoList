@@ -17,30 +17,43 @@ export class ToDoList {
         //Extract to method "setting up event listeners"
         this.list.addEventListener('click', (event) => {
             let target = event.target as HTMLElement;
-            if(target.closest("input[type='checkbox']")){
-                const listSection =target.closest('.list-section')
+            if (target.closest("input[type='checkbox']")) {
+                const listSection = target.closest('.list-section')
                 // Check if any of the checkboxes are checked
                 const checkboxes = listSection.querySelectorAll("input[type='checkbox']") as NodeListOf<HTMLInputElement>;
                 const checked = Array.from(checkboxes).some((checkbox) => checkbox.checked);
                 const actionBtn = listSection.querySelector("button") as HTMLButtonElement;
-                if(checked){
+                if (checked) {
                     actionBtn.disabled = false;
                 } else {
                     actionBtn.disabled = true;
                 }
 
-              console.log('checkbox clicked', {actionBtn});
+                console.log('checkbox clicked', { actionBtn });
             }
         })
 
         // Add html to the page for add TodoItem
-        console.log({AddToDoHtml})
+        console.log({ AddToDoHtml })
         document.querySelector(".createTodo").insertAdjacentHTML('afterbegin', AddToDoHtml);
         // on click button#btnAddTodo set open class on #AddToDo    
         const btnAddTodo = document.querySelector('#btnAddTodo') as HTMLElement;
         const AddToDo = document.querySelector('#AddToDo') as HTMLElement;
         btnAddTodo.addEventListener('click', () => {
-            AddToDo.classList.toggle('open');
+            if (AddToDo.classList.contains('open')) {
+                AddToDo.classList.add('fadeOut');
+                setTimeout(() => {
+                    AddToDo.classList.remove('open');
+                    AddToDo.classList.remove('fadeOut');
+                }, 4000);
+            } else {
+                AddToDo.classList.add('fadeIn');
+                AddToDo.classList.add('open');
+                setTimeout(()=>{
+                    AddToDo.classList.remove('fadeIn');
+                }, 1000)
+            }
+
         });
     }
 

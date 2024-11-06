@@ -1,399 +1,432 @@
 footer {
-    min-height: 500px;
+  min-height: 500px;
 }
-header, .sub-header{
-    button{
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        // padding: 5px 10px;
-        cursor: pointer;
-        box-sizing: border-box;
-        font-weight: bold;
-        &.secondary{
-            background-color: #6c757d;
-        }
-
-        &[disabled]{
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-    }
-
-}
-
-
-
-
-.sub-header button{
-    margin-right: 2px;
-}
-
-.todo {
-    overflow-x: hidden;
-    display: grid;
-    grid-template-columns: 110px 1fr 200px;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    margin-bottom: 10px;
-    width: 100%;
-    box-sizing: border-box;
-    position: relative;
-
-
-    select {
-        cursor: pointer;
-        align-self: flex-start;
-        height: 30px;
-        width: 100%;
-    }
-
-    div.text-inputs {
-        display: flex;
-        flex-direction: column;
-        margin-inline: 10px;
-        align-self: flex-start;
-
-        input[type="text"],
-        textarea {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 5px;
-        }
-
-        textarea {
-            resize: vertical;
-            max-height: 60vh;
-            height: 40px;
-            // We don't animate this via CSS b/c we want the resize textarea to not animate when manually resized;
-            // transition: height 0.5s;
-        }
-
-        input[type="text"] {
-            flex-grow: none;
-            height: 30px;
-        }
-    }
-}
-
-
-.todo input[type="checkbox"] {
-    scale: 1.3;
-    cursor: pointer;
-    align-self: flex-start;
-}
-
-.todo button {
-    background-color: rgb(158, 113, 113);
-
+header,
+.sub-header {
+  button {
+    background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
     // padding: 5px 10px;
     cursor: pointer;
-    align-self: flex-start;
-    height: 30px !important; // Something to do with the @containers required this
+    box-sizing: border-box;
     font-weight: bold;
-
-    &.deleteBtn {
-        margin-left: 10px;
-        background-color: #f00;
-
+    &.secondary {
+      background-color: #6c757d;
     }
 
-    &.expandBtn {
-        margin-bottom: 10px;
-        background-color: rgb(188, 228, 26);
-        color: black;
-
+    &[disabled] {
+      background-color: #ccc;
+      cursor: not-allowed;
     }
+  }
 }
 
+.sub-header button {
+  margin-right: 2px;
+}
 
+.todo {
+  overflow-x: hidden;
+  display: grid;
+  grid-template-columns: 110px 1fr 200px;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
 
+  select {
+    cursor: pointer;
+    align-self: flex-start;
+    height: 30px;
+    width: 100%;
+  }
+
+  div.text-inputs {
+    display: flex;
+    flex-direction: column;
+    margin-inline: 10px;
+    align-self: flex-start;
+
+    input[type='text'],
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 5px;
+    }
+
+    textarea {
+      resize: vertical;
+      max-height: 60vh;
+      height: 40px;
+      // We don't animate this via CSS b/c we want the resize textarea to not animate when manually resized;
+      // transition: height 0.5s;
+    }
+
+    input[type='text'] {
+      flex-grow: none;
+      height: 30px;
+    }
+  }
+}
+
+.todo input[type='checkbox'] {
+  scale: 1.3;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.todo button {
+  background-color: rgb(158, 113, 113);
+
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  // padding: 5px 10px;
+  cursor: pointer;
+  align-self: flex-start;
+  height: 30px !important; // Something to do with the @containers required this
+  font-weight: bold;
+
+  &.deleteBtn {
+    margin-left: 10px;
+    background-color: #f00;
+  }
+
+  &.expandBtn {
+    margin-bottom: 10px;
+    background-color: rgb(188, 228, 26);
+    color: black;
+  }
+}
 
 .d-none {
-    display: none;
+  display: none;
 }
 
 .d-flex {
-    display: flex;
+  display: flex;
 }
 
 .flex-column {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .flex-row {
-    flex-direction: row;
+  flex-direction: row;
 }
 
 .right-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: inherit;
+  // display: grid;
+  // grid-template-columns: 1fr 1fr;
+  // grid-template-rows: 33px;
+  height: 100%;
+  .top-row {
     display: flex;
-    flex-direction: column;
-    justify-content: inherit;
-    // display: grid;
-    // grid-template-columns: 1fr 1fr;
-    // grid-template-rows: 33px;
-    height: 100%;
-    ;
-
-    .top-row{
-        display: flex;
-        align-items: center;
-        i {
-            margin: 5px;
-            cursor: pointer;
-            z-index: 1;
-            &:hover{
-                color: #007bff;
-            }
-        }
+    align-items: center;
+    i {
+      margin: 5px;
+      cursor: pointer;
+      z-index: 1;
+      &:hover {
+        color: #007bff;
+      }
     }
+  }
 
-    .right-side-bottom,
-    fieldset {
-        grid-column: span 2;
-        text-align: center;
-        // align-self: self-end;
-
-    }
+  .right-side-bottom,
+  fieldset {
+    grid-column: span 2;
+    text-align: center;
+    // align-self: self-end;
+  }
 }
 
 .left-sidebar {
-    display: grid;
-    grid-template-columns: 1fr;
-    // grid-auto-flow: dense;
-    height: 100%;
-    container-type: size; // <--- DEFINING LOCAL MEDIA QUERY
-    container-name: left-sidebar-height;
+  display: grid;
+  grid-template-columns: 1fr;
+  // grid-auto-flow: dense;
+  height: 100%;
+  container-type: size; // <--- DEFINING LOCAL MEDIA QUERY
+  container-name: left-sidebar-height;
 
-    // width: 40px;
-    .mark-completed {
-        // display: inline;
-        grid-column: span 1;
-        align-self: self-start;
-        text-align: center;
-        // margin-bottom: auto;
+  // width: 40px;
+  .mark-completed {
+    // display: inline;
+    grid-column: span 1;
+    align-self: self-start;
+    text-align: center;
+    // margin-bottom: auto;
 
-        .dial-container {
-
-            display: none;
-            // height: 0px;
-            opacity: 0;
-            z-index: -1;
-            // margin: 0 auto;
-            transition: opacity 0.5s;
-        }
+    .dial-container {
+      display: none;
+      // height: 0px;
+      opacity: 0;
+      z-index: -1;
+      // margin: 0 auto;
+      transition: opacity 0.5s;
     }
+  }
 
-    .grid-placement {
-        grid-column: span 2;
-        align-self: self-start;
-        margin-top: auto;
-        text-align: center;
-    }
+  .grid-placement {
+    grid-column: span 2;
+    align-self: self-start;
+    margin-top: auto;
+    text-align: center;
+  }
 }
 
-
 @container left-sidebar-height (min-height: 100px) {
-    .left-sidebar {
-        .mark-completed {
-            label {
-                white-space: nowrap;
-                display: block !important;
-            }
-        }
+  .left-sidebar {
+    .mark-completed {
+      label {
+        white-space: nowrap;
+        display: block !important;
+      }
     }
+  }
 }
 
 @container left-sidebar-height (min-height: 290px) {
-    .left-sidebar {
-        .mark-completed {
-            .dial-container {
-                display: flex;
-                margin: 20px auto;
-                justify-content: center;
-                z-index: 1;
-                height: initial;
-                opacity: 1;
-                // animation: fadeIn 1s ease forwards;
-            }
-
-        }
-
+  .left-sidebar {
+    .mark-completed {
+      .dial-container {
+        display: flex;
+        margin: 20px auto;
+        justify-content: center;
+        z-index: 1;
+        height: initial;
+        opacity: 1;
+        // animation: fadeIn 1s ease forwards;
+      }
     }
-
+  }
 }
 
 .right-sidebar {
+  container-type: size; // <--- DEFINING LOCAL MEDIA QUERY
+  container-name: right-sidebar-height;
 
-    container-type: size; // <--- DEFINING LOCAL MEDIA QUERY
-    container-name: right-sidebar-height;
+  .commentsBtn,
+  fieldset {
+    display: none;
+    height: 0px;
+    opacity: 0;
+    z-index: -1;
+    // margin: 0 auto;
+    transition: opacity 0.5s;
+  }
 
-    .commentsBtn,
+  .detailsBtn {
+    background-color: transparent;
+    color: black;
+    margin-top: auto;
+  }
+
+  @container right-sidebar-height (min-height: 300px) {
+    .commentsBtn {
+      display: inline-block;
+      opacity: 1;
+      // margin: 20px auto;
+      justify-content: center;
+      z-index: 1;
+      height: initial;
+      // animation: fadeIn 1s ease forwards;
+    }
+
     fieldset {
-        display: none;
-        height: 0px;
-        opacity: 0;
-        z-index: -1;
-        // margin: 0 auto;
-        transition: opacity 0.5s;
-
+      display: block;
+      opacity: 1;
+      z-index: 1;
+      height: initial;
+      margin-bottom: auto;
+      // animation: fadeIn 1s ease forwards;
     }
 
     .detailsBtn {
-        background-color: transparent;
-        color: black;
-        margin-top: auto;
+      display: none;
     }
 
-
-    @container right-sidebar-height (min-height: 300px) {
-        .commentsBtn {
-            display: inline-block;
-            opacity: 1;
-            ;
-            // margin: 20px auto;
-            justify-content: center;
-            z-index: 1;
-            height: initial;
-            // animation: fadeIn 1s ease forwards;
-        }
-
-        fieldset {
-            display: block;
-            opacity: 1;
-            z-index: 1;
-            height: initial;
-            margin-bottom: auto;
-            // animation: fadeIn 1s ease forwards;
-        }
-
-        .detailsBtn {
-            display: none;
-        }
-
-        .actionsBtn {
-            display: block !important;
-            margin: auto;
-        }
+    .actionsBtn {
+      display: block !important;
+      margin: auto;
     }
+  }
 }
 
 header {
-    position: sticky;
-    z-index: 3;
-    top: 0px;
-    background-color: white;
-    height: 60px;
-    display: flex;
-    justify-content: end;
-    padding: 10px;
-    box-sizing: border-box;
-    float: right;
+  position: sticky;
+  z-index: 3;
+  top: 0px;
+  background-color: white;
+  height: 60px;
+  display: flex;
+  justify-content: end;
+  padding: 10px;
+  box-sizing: border-box;
+  float: right;
 }
 
 #todoList {
-    .sub-header {
-        position: sticky;
-        top: 0px;
-        z-index: 2;
-        background-color: white;
-        // display: inline;
-        height: 59px;
-        // padding: 5px;
-        display: flex;
-        align-items: center;
-        max-width: calc(100% - 101px);
-        // margin-right: 10px;
-        h1 {
-            white-space: nowrap;
-        }
-
-        .quote {
-            line-height: 15px;
-            position: relative;
-            margin-left: 50px;
-
-            small {
-                font-weight: bold;
-                color: rgb(48, 64, 54);
-                position: absolute;
-                ;
-                right: 30px;
-            }
-        }
-
-
-        .button-containers {
-            flex-grow: 1;
-            display: flex;
-            justify-content: end;
-            height: 66%; // makes the button height match the Add a Todo button
-        }
+  .sub-header {
+    position: sticky;
+    top: 0px;
+    z-index: 2;
+    background-color: white;
+    // display: inline;
+    height: 59px;
+    // padding: 5px;
+    display: flex;
+    align-items: center;
+    max-width: calc(100% - 101px);
+    // margin-right: 10px;
+    h1 {
+      white-space: nowrap;
     }
+
+    .quote {
+      line-height: 15px;
+      position: relative;
+      margin-left: 50px;
+
+      small {
+        font-weight: bold;
+        color: rgb(48, 64, 54);
+        position: absolute;
+        right: 30px;
+      }
+    }
+
+    .button-containers {
+      flex-grow: 1;
+      display: flex;
+      justify-content: end;
+      height: 66%; // makes the button height match the Add a Todo button
+    }
+  }
 }
-
-
-
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
+  from {
+    opacity: 0;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
 
-.sidemenu{
+.sidemenu {
+  position: absolute;
+  background-color: #9d9191;
+  width: 211px;
+  height: 100%;
+  right: 0;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: transform 0.5s;
+  transform: translateX(100%);
+  &.open {
+    transform: translateX(0);
+  }
+}
+
+header {
+  // position: relative;
+  // z-index: 2;
+  #AddToDo {
+    width: calc(100vw - 36px);
+    // min-height: 100vh;
+    // display: block;
+
     position: absolute;
-    background-color: #9d9191;
-    width: 211px;
-    height: 100%;
-    right: 0;
-    padding: 10px;
-    box-sizing: border-box;
-    transition: transform 0.5s;
-    transform: translateX(100%);
-    &.open{
-        transform: translateX(0);
+    right: 10px;
+    // bottom: 240%;
+    height: 0px;
+    overflow-y: hidden;
+    top: -120%;
+
+    // padding: 10px;
+    // top: 0px;
+    // position: fixed;
+    // // z-index: 2;
+    // // top:0;
+    // transform: translateY(-100%);
+    transition:
+      all 0.5s,
+      width 0s;
+    &.open {
+      height: auto;
+      top: 70px;
+
+      
     }
+
+    // @keyframes fadeIn {
+    //     0% {
+    //         bottom: 240%;
+    //         height: 0px;
+    //         overflow: hidden;
+    //     }
+
+    //     100% {
+    //         bottom: 0;
+    //         height: initial;
+    //         overflow: initial;
+    //     }
+
+    // }
+
+    .content {
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      // margin: 20px;
+      background-color: #007bff;
+      // height: 0px;
+      // padding: 0px;
+      textarea {
+        resize: vertical;
+      }
+    }
+  }
 }
 
 
+.fadeOut {
+    animation: fadeOut 0.5s forwards;
 
-header{
-    // position: relative;
-    // z-index: 2;
-    #AddToDo{
-        width: calc(100vw - 36px);
-        // min-height: 100vh;
-        // display: block;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        // margin: 20px;
-        background-color: #007bff;
-        position: absolute;
-        right: 0;
-        bottom: 120%;
-        padding: 10px;;
-        // top: 0px;
-        // position: fixed;
-        // // z-index: 2;
-        // // top:0;
-        // transform: translateY(-100%);
-        transition: bottom 0.5s;
-        &.open{
-            bottom: -120%;
-        }
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
     }
-}
+  }
+.fadeIn {
+    animation: fadeIn 0.5s forwards;
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+  }
