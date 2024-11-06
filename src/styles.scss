@@ -1,6 +1,33 @@
 footer {
     min-height: 500px;
 }
+header, .sub-header{
+    button{
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        // padding: 5px 10px;
+        cursor: pointer;
+        box-sizing: border-box;
+        font-weight: bold;
+        &.secondary{
+            background-color: #6c757d;
+        }
+
+        &[disabled]{
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    }
+
+}
+
+
+
+.sub-header button{
+    margin-right: 2px;
+}
 
 .todo {
     display: grid;
@@ -268,6 +295,7 @@ header {
         display: flex;
         align-items: center;
         max-width: calc(100% - 101px);
+        // margin-right: 10px;
         h1 {
             white-space: nowrap;
         }
@@ -285,6 +313,7 @@ header {
                 right: 30px;
             }
         }
+
 
         .button-containers {
             flex-grow: 1;
