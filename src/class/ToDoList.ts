@@ -118,8 +118,11 @@ export class ToDoList {
                     } else {
                         // do nothing b/c no item is checked, button should be disabled.
                     }
+                    actionBtn.setAttribute('disabled', 'true');
                 });
             });
+      
+            console.log({actionBtn})
         });
     }
 
