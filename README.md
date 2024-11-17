@@ -2,6 +2,20 @@
 
 > Live deployment: https://williamowen65.github.io/ToDoList/
 
+[Watch the Video](https://www.youtube.com/watch?v=g47_egZwIj8)
+
+---
+
+_
+<video width="640" height="360" controls>
+  <source src="./src/assets/Video_Demo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>_
+
+
+---
+
+
 What I would like to do is make a "todo list" that combines things from two great todo list.  
 
 I want the ability to dispatch work efficiently. I want to be able to see an overview, turn on and off collections of todos and for them to have priority.  
