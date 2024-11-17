@@ -4,8 +4,8 @@
 
 [Watch Video Demo of the app](https://www.youtube.com/watch?v=g47_egZwIj8)
 
-<iframe width="420" height="345" src="https://www.youtube.com/watch?v=g47_egZwIj8">
-</iframe>
+[![Watch the Video](https://img.youtube.com/vi/g47_egZwIj8/0.jpg)](https://www.youtube.com/watch?v=g47_egZwIj8)
+
 
 What I would like to do is make a "todo list" that combines things from two great todo list.  
 
