@@ -271,7 +271,7 @@ export class ToDoItem {
         //@ts-ignore
         data.markCompleteText = data.complete === "complete" ? "Mark Incomplete" : "Mark Complete";
         
-         const template = TemplateEngine.createTemplate(toDo_html, data);
+        const template = TemplateEngine.createTemplate(toDo_html, data);
 
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = template.trim();

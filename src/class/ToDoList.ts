@@ -7,15 +7,60 @@ export class ToDoList {
     ToDoItemInstances: { [key: string]: ToDoItem } = {}
     idIndex: number = 0;
 
+   
     constructor(listSelector: string) {
         this.tasks = [];
         this.list = document.querySelector(listSelector) as HTMLElement
 
-        if (this.list && this.tasks.length > 0) {
-
-        }
 
         //Extract to method "setting up event listeners"
+        this.setListeners()
+
+    }
+
+    addTask(task: TodoItemData): ToDoItem {
+        this.tasks.push(task);
+        this.tasks.sort(this.compoundSort);
+        this.ToDoItemInstances[task.id] = ToDoItem.createTodoItem(task);
+        this.idIndex++;
+        return this.ToDoItemInstances[task.id]
+    }
+
+    removeTask(task: TodoItemData): void {
+        const index = this.tasks.indexOf(task);
+        if (index > -1) {
+            this.tasks.splice(index, 1);
+        }
+    }
+
+    getTasks(): TodoItemData[] {
+        return this.tasks;
+    }
+
+    /**
+     * Compares two TodoItemData objects based on their priority and index.
+     * 
+     * @param a - The first TodoItemData object to compare.
+     * @param b - The second TodoItemData object to compare.
+     * @returns A negative number if a should come before b, a positive number if a should come after b, or 0 if they are equal.
+     */
+    private compoundSort(a: TodoItemData, b: TodoItemData): number {
+        const priorityOrder = { 'high': 1, 'medium': 2, 'low': 3 };
+
+        // Compare by priority
+        //@ts-ignore
+        const priorityComparison = priorityOrder[a.priority] - priorityOrder[b.priority];
+        if (priorityComparison !== 0) {
+            return priorityComparison;
+        }
+
+        // If priorities are equal, compare by index
+        return a.index - b.index;
+    }
+
+
+    setListeners() {
+        // Event listener for the checkboxes
         this.list.addEventListener('click', (event) => {
             let target = event.target as HTMLElement;
             if (target.closest("input[type='checkbox']")) {
@@ -34,8 +79,10 @@ export class ToDoList {
             }
         })
 
+
+        
         // Add html to the page for add TodoItem
-        console.log({ AddToDoHtml })
+        // console.log({ AddToDoHtml })
         document.querySelector(".createTodo").insertAdjacentHTML('afterbegin', AddToDoHtml);
         // on click button#btnAddTodo set open class on #AddToDo    
         const btnAddTodo = document.querySelector('#btnAddTodo') as HTMLElement;
@@ -121,52 +168,10 @@ export class ToDoList {
                     actionBtn.setAttribute('disabled', 'true');
                 });
             });
-      
-            console.log({actionBtn})
+
+            console.log({ actionBtn })
         });
     }
-
-    addTask(task: TodoItemData): ToDoItem {
-        this.tasks.push(task);
-        this.tasks.sort(this.compoundSort);
-        this.ToDoItemInstances[task.id] = ToDoItem.createTodoItem(task);
-        this.idIndex++;
-        return this.ToDoItemInstances[task.id]
-    }
-
-    removeTask(task: TodoItemData): void {
-        const index = this.tasks.indexOf(task);
-        if (index > -1) {
-            this.tasks.splice(index, 1);
-        }
-    }
-
-    getTasks(): TodoItemData[] {
-        return this.tasks;
-    }
-
-    /**
-     * Compares two TodoItemData objects based on their priority and index.
-     * 
-     * @param a - The first TodoItemData object to compare.
-     * @param b - The second TodoItemData object to compare.
-     * @returns A negative number if a should come before b, a positive number if a should come after b, or 0 if they are equal.
-     */
-    private compoundSort(a: TodoItemData, b: TodoItemData): number {
-        const priorityOrder = { 'high': 1, 'medium': 2, 'low': 3 };
-
-        // Compare by priority
-        //@ts-ignore
-        const priorityComparison = priorityOrder[a.priority] - priorityOrder[b.priority];
-        if (priorityComparison !== 0) {
-            return priorityComparison;
-        }
-
-        // If priorities are equal, compare by index
-        return a.index - b.index;
-    }
-
-
 
 
 }
