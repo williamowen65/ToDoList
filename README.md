@@ -4,7 +4,7 @@
 
 [Watch Video Demo of the app](https://www.youtube.com/watch?v=UBIS2z6rD8k)
 
-[![Watch the Video](https://img.youtube.com/vi/g47_egZwIj8/0.jpg)](https://www.youtube.com/watch?v=UBIS2z6rD8k)
+
 
 
 What I would like to do is make a "todo list" that combines things from two great todo list.  
