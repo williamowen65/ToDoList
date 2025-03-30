@@ -1,74 +1,60 @@
-# TODO LIST
+# ToDo List
 
-> Live deployment: https://williamowen65.github.io/ToDoList/
+## Live Deployment
+[Click here to view the app](https://williamowen65.github.io/ToDoList/)
 
-[Watch Video Demo of the app](https://www.youtube.com/watch?v=UBIS2z6rD8k)
+## Video Demo
+Watch a video demo of the app (link coming soon).
 
+## Project Overview
+This ToDo List application is inspired by the best features of **Google Calendar** and **Jira**. The goal is to create an efficient task management system that allows users to:
+- **Dispatch work efficiently**
+- **Get an overview of tasks**
+- **Toggle collections of tasks on and off**
+- **Set priorities for tasks**
 
+## Development Plan
+### 1. Complete the Assignment
+- Implement the basic ToDo List with the required functionality.
+- Add **local storage** support to persist tasks.
 
+### 2. Create the `TodoItem` Class
+- Store `TodoItem` objects in **local storage**.
+- Each `TodoItem` will have multiple properties:
+  - `priority`
+  - `createdAt`
+  - `completed`
+  - `groupId`
+  - `id`
+- Actions:
+  - **[Stretch Goal] Notify Users** – Implement push notifications, emails, or text reminders.
 
-What I would like to do is make a "todo list" that combines things from two great todo list.  
+### 3. Create the `ToDoListSettings` Class
+- Store settings in **local storage**.
+- Manage global controls for how the ToDo List behaves.
+- Define collections:
+  ```json
+  collections = {
+    "id1": { "name": "Work Tasks", "id": "id1" },
+    "id2": { "name": "Personal Goals", "id": "id2" }
+  }
+  ```
 
-I want the ability to dispatch work efficiently. I want to be able to see an overview, turn on and off collections of todos and for them to have priority.  
-The two inspirational sites for this are Google Calendar and Jira. 
+## Technical Notes
+- **CSS Container Queries:**
+  - Used the new `@container` feature, allowing media queries to depend on an element’s container size rather than the screen size.
+  - This ensures responsive UI behavior, such as rendering the "mark completed" logo dynamically.
 
-## The plan
+- **Bug: Flashing Issue on Save**
+  - When saving a task, there's an unintended flash due to a CSS class.
+  - Needs to be updated to prevent the flickering effect.
 
-
-### 1. Complete the assignment
-
-Create the basic todo list with the requirements
-Add the local storage..   
-
-### 2. Create the TodoItem class
-
-> This would be stored in the the local storage  
-
-The Todo Items need to be a class because they are going to have many properties.   
-These properties may be: 
-
-- priority
-- createdAt
-- completed
-- groupId
-- id
-
-
-Actions:
-
-- [Stretch goal] notify -- This can send push notifications via the browser? Emails? Text? Reminders?
-
-### 3. Create the ToDoListSettings class
-
-> This would be stored in the the local storage  
-
-Maybe this class helps global controls for how the todo list works.
-
-```json
-collections = {
-   [id]: { 
-      name,
-      id
-   },
-   ...
-} 
-```
+## Future Enhancements
+- Improve UI/UX for better task visualization.
+- Add filtering and sorting options.
+- Expand notification capabilities.
+- Implement user authentication for multi-device sync.
 
 ---
-
-# Sidenotes
-
-I used a new CSS feature called @container. This is one of the latest additions to tools for media queries. but these media queries don't depend on screen side, but container size of elements instead. This is why the "mark completed logo" is rendered
-
-## notes
-
-The flash when saving the vote is new.. because of a class in the styles. It needs to be updated to not do that.
-  
-
-
-
-
-
-
-
+This project is a work in progress. Contributions and feedback are welcome!
 
